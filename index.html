@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VoxSentra - Voice Integrity & Impersonation Detection</title>
+    <meta name="description" content="AI-powered real-time voice integrity and impersonation detection operations platform." />
+    <meta property="og:title" content="VoxSentra - Voice Integrity & Impersonation Detection" />
+    <meta property="og:description" content="AI-powered real-time voice integrity and impersonation detection operations platform." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      // Ignore benign Vite HMR / WebSocket client connection errors per environment specification
+      window.addEventListener('error', function(event) {
+        var msg = (event && (event.message || (event.error && event.error.message))) || '';
+        var src = (event && event.filename) || '';
+        if (
+          msg.includes('WebSocket') ||
+          msg.includes('@vite/client') ||
+          msg.includes('createWebSocketModuleRunnerTransport') ||
+          src.includes('@vite/client')
+        ) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+        }
+      }, true);
+      window.addEventListener('unhandledrejection', function(event) {
+        var reason = (event && event.reason && (event.reason.message || String(event.reason))) || '';
+        if (
+          reason.includes('WebSocket') ||
+          reason.includes('@vite/client') ||
+          reason.includes('createWebSocketModuleRunnerTransport')
+        ) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+        }
+      }, true);
+    </script>
+  </head>
+  <body class="bg-[#0B0F14] text-[#E6EDF3] antialiased selection:bg-cyan-500/30 selection:text-cyan-200">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

@@ -1,0 +1,6 @@
+{
+  "name": "VoxSentra - Voice Integrity & Impersonation Detection",
+  "description": "AI-powered real-time voice integrity and impersonation detection operations platform.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
