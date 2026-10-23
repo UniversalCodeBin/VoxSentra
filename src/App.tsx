@@ -12,14 +12,9 @@ import { AnalysisRecord, AuthUser, SystemHealth } from './types';
 
 export default function App() {
   const [currentTab, setCurrentTab] = useState<string>('overview');
-  const [user, setUser] = useState<AuthUser | null>(() => authStorage.getUser() || {
-    email: 'analyst@voxsentra.io',
-    name: 'Security Analyst',
-    role: 'Security Analyst',
-    organization: 'SOC Cyber Defense'
-  });
+  const [user, setUser] = useState<AuthUser | null>(() => authStorage.getUser() || null);
   const [token, setToken] = useState<string | null>(() => authStorage.getToken());
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(true);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
 
   // Application Data States
   const [systemHealth, setSystemHealth] = useState<SystemHealth | null>(null);
@@ -52,27 +47,18 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    // If no active token in storage, auto-initialize real backend JWT session
     const existingToken = authStorage.getToken();
     if (!existingToken) {
-      api.login('analyst@voxsentra.io', 'soc-enterprise-access')
-        .then(res => {
-          setUser(res.user);
-          setToken(res.token);
-          setIsAuthenticated(true);
-          loadHealth();
-          loadHistory();
-        })
-        .catch(err => {
-          console.warn('Initial session bootstrap note:', err);
-        });
+      setIsAuthenticated(false);
     } else {
-      // Verify existing session
       api.verifySession().then(res => {
         if (res && res.valid) {
+          setIsAuthenticated(true);
           setUser(res.user);
+        } else {
+          setIsAuthenticated(false);
         }
-      });
+      }).catch(() => setIsAuthenticated(false));
     }
 
     loadHealth();

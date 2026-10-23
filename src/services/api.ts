@@ -47,10 +47,10 @@ async function authenticatedFetch(input: RequestInfo, init: RequestInit = {}): P
   if (res.status === 401) {
     // Attempt silent session renewal with backend
     try {
-      const loginRes = await fetch('/api/auth/login', {
+      const loginRes = await fetch('/api/auth/refresh', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: 'analyst@voxsentra.io', password: 'soc-verified-session' })
+        body: JSON.stringify({})
       });
       if (loginRes.ok) {
         const loginData = await loginRes.json();
@@ -83,7 +83,7 @@ export const api = {
     const res = await fetch('/api/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: identifier, password: password || 'demo' })
+      body: JSON.stringify({ identifier, password })
     });
     if (!res.ok) {
       const err = await res.json().catch(() => ({ error: 'Login failed' }));
