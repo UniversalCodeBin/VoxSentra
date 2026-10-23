@@ -1,0 +1,28 @@
+{
+  "dataset": {
+    "raw_dir": "data/raw",
+    "required_rows": 121461,
+    "required_splits": {
+      "train": 25380,
+      "val": 24844,
+      "test": 71237
+    },
+    "labels": {
+      "0": "genuine",
+      "1": "spoof"
+    }
+  },
+  "training": {
+    "epochs": 15,
+    "batch_size": 16,
+    "num_workers": 0,
+    "learning_rate": 0.001,
+    "seed": 42,
+    "evaluate_test": false
+  },
+  "outputs": {
+    "model": "models/asvspoof/voice_detector.pt",
+    "config": "models/asvspoof/model_config.json",
+    "metrics": "models/asvspoof/metrics.json"
+  }
+}

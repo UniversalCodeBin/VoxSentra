@@ -10,7 +10,9 @@ dotenv.config();
 
 const app = express();
 const PORT = parseInt(process.env.PORT || '3000', 10);
-const JWT_SECRET = process.env.JWT_SECRET || 'voxsentra-sec-prod-token-key-2026';
+const JWT_SECRET: string = process.env.JWT_SECRET ?? (() => {
+  throw new Error('JWT_SECRET must be supplied through the environment.');
+})();
 
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));

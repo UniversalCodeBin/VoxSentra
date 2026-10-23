@@ -1,8 +1,81 @@
-node_modules/
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
 build/
 dist/
-coverage/
-.DS_Store
-*.log
-.env*
+*.egg-info/
+*.egg
+MANIFEST
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+voice_integrity.db
+test_voice_integrity.db
+
+# Secrets
+.env
+.env.local
+.env.*.local
 !.env.example
+
+# Runtime temp audio (never commit recordings)
+temp_audio/
+temp_audio_test/
+!temp_audio/.gitkeep
+!temp_audio_test/.gitkeep
+
+# Local raw audio / datasets (huge)
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+data/raw/metadata.csv
+data/raw/metadata_fixed.csv
+data/raw/metadata_real.csv
+
+# Model artifacts and training outputs are obtained locally; do not publish
+# checkpoints or metrics without provenance and evaluation review.
+models/*.pt
+models/*.pth
+models/*.ckpt
+models/metrics.json
+models/model_config.json
+
+# Bundled ASVspoof dataset (7+ GB) — never commit
+LA/
+LA.zip
+
+# Node / frontend tooling
+node_modules/
+pnpm-lock.yaml
+bun.lock
+
+# Frontend build outputs
+dist/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Reports (generated)
+reports/*.png
+.coverage
+htmlcov/
+.opencode/

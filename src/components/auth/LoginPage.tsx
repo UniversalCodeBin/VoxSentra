@@ -127,7 +127,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
                 <ArrowRight className="h-3.5 w-3.5" />
               </button>
             </form>
-    <div class='mt-4 text-center text-sm text-cyan-400'><button onClick={() => window.location.href='#/register'} className='underline hover:text-white'>Don't have an account? Create account</button></div>
+    <div className='mt-4 text-center text-sm text-cyan-400'><button onClick={() => window.location.href='#/register'} className='underline hover:text-white'>Don't have an account? Create account</button></div>
           </div>
 
           <div className="mt-8 border-t border-white/5 pt-4 text-center">
